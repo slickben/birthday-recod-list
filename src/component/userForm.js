@@ -43,7 +43,7 @@ export default class userForm extends Component {
     }
 
     onUserSubmit = (firstName, lastName, birthday, age, hobby) => {
-        axios.post("https://afternoon-sands-89510.herokuapp.com/api/user", {
+        axios.post("http://glacial-shelf-46892.herokuapp.com/api/user", {
             firstName, 
             lastName, 
             birthday, 

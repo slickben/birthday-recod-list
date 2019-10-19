@@ -10,7 +10,7 @@ export default class User extends Component {
     }
 
     componentWillMount() {
-        axios.get("https://afternoon-sands-89510.herokuapp.com/api/user")
+        axios.get("http://glacial-shelf-46892.herokuapp.com/api/user")
             .then( (user) => {
                 this.setState({
                     users: user.data
