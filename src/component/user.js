@@ -10,7 +10,7 @@ export default class User extends Component {
     }
 
     componentWillMount() {
-        axios.get("http://glacial-shelf-46892.herokuapp.com/api/user")
+        axios.get("https://glacial-shelf-46892.herokuapp.com/api/user")
             .then( (user) => {
                 this.setState({
                     users: user.data
