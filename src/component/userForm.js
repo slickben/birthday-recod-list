@@ -60,7 +60,7 @@ export default class userForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group row">
                         <label htmlFor="fName" className="col-sm-3 col-form-label">First Name</label>
-                        <input type="text" value={this.state.firstName} id="fName" name="fisrtName" className="col-sm-9" onChange={this.handleChange} ></input>
+                        <input type="text" value={this.state.fisrtName} id="fName" name="fisrtName" className="col-sm-9" onChange={this.handleChange} ></input>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="lName" className="col-sm-3 col-form-label">last Name</label>
