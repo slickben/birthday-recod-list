@@ -60,11 +60,11 @@ export default class userForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group row">
                         <label htmlFor="fName" className="col-sm-3 col-form-label">First Name</label>
-                        <input type="text" id="fName" name="fisrtName" className="col-sm-9" onChange={this.handleChange} ></input>
+                        <input type="text" value={this.state.firstName} id="fName" name="fisrtName" className="col-sm-9" onChange={this.handleChange} ></input>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="lName" className="col-sm-3 col-form-label">last Name</label>
-                        <input type="text" id="lName" name="lastName" className="col-sm-9" onChange={this.handleChange}></input>
+                        <input type="text" value={this.state.lastName} id="lName" name="lastName" className="col-sm-9" onChange={this.handleChange}></input>
                     </div>
                     <div className="form-group row">
                        <label htmlFor="brithday" className="col-sm-3 col-form-label">Birthday</label>
@@ -72,12 +72,12 @@ export default class userForm extends Component {
                     </div>
                     <div className="form-group row">
                         <label htmlFor="age" className="col-sm-3 col-form-label">Age</label>
-                        <input type="number" id="age" className="col-sm-9" name="age" onChange={this.handleChange}></input>
+                        <input type="number" value={this.state.age} id="age" className="col-sm-9" name="age" onChange={this.handleChange}></input>
                     </div>
                     {/* <input type="date" name="fisrtName"></input> awaiting calender component */}
                     <div className="form-group row">
                         <label htmlFor="hobby" className="col-sm-3 col-form-label">hobby</label>
-                        <input type="text" className="col-sm-9" id="hobby" name="hobby" onChange={this.handleChange}></input>
+                        <input type="text" value={this.state.hobby} className="col-sm-9" id="hobby" name="hobby" onChange={this.handleChange}></input>
                     </div>
                     
                     <input type="submit" value="Submit" className="btn btn-primary large"></input>
