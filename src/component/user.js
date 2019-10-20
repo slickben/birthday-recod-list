@@ -9,8 +9,15 @@ export default class User extends Component {
         }
     }
 
-    componentWillMount() {
-        axios.get("https://glacial-shelf-46892.herokuapp.com/api/user")
+    componentDidMount() {
+       setInterval(() => {
+           this.fatchdata()
+           console.log("fatching dat every 5sc")
+       }, 500);
+    }
+
+    fatchdata = () => {
+         axios.get("https://glacial-shelf-46892.herokuapp.com/api/user")
             .then( (user) => {
                 this.setState({
                     users: user.data
@@ -28,8 +35,6 @@ export default class User extends Component {
                         return (
                             <tbody>
                                 <tr>
-                                {/* <th scope="row">2</th> */}
-                                    {/* <td>{user.firstName}</td>< */}
                                     <td>{user.firstName}</td>
                                     <td>{user.lastName}</td>
                                     <td>{user.birthday.slice(-24, -14)}</td>
