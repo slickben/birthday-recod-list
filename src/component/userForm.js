@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import Calendar from 'react-calendar';
-import axios from 'axios';
-// import Calendar from 'react-input-calendar'
+// import axios from 'axios';
+import propType from "prop-types"
+import { connect } from 'react-redux';
+import { createPost } from '../redux/actions/postAction'
 
 
-export default class userForm extends Component {
+ class userForm extends Component {
     constructor () {
         super()
         this.state = {
@@ -30,8 +32,15 @@ export default class userForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const post = {
+            firstName:  this.state.fisrtName,
+            lastName: this.state.lastName,
+            birthday: this.state.date, 
+            age: this.state.age,
+            hobby: this.state.hobby
+        }
         
-        this.onUserSubmit(this.state.fisrtName, this.state.lastName, this.state.date, this.state.age, this.state.hobby);
+        this.props.createPost(post)
         console.log(this.state.date)
         this.setState({
             fisrtName: "",
@@ -41,18 +50,6 @@ export default class userForm extends Component {
             hobby: "",
         })
     }
-
-    onUserSubmit = (firstName, lastName, birthday, age, hobby) => {
-        axios.post("https://glacial-shelf-46892.herokuapp.com/api/user", {
-            firstName, 
-            lastName, 
-            birthday, 
-            age, 
-            hobby
-        })   
-    }
-
-
 
     render() {
         return (
@@ -86,3 +83,9 @@ export default class userForm extends Component {
         )
     }
 }
+
+userForm.propType = {
+    createPost: propType.func.isRequired
+}
+
+export default connect(null, {createPost})(userForm)

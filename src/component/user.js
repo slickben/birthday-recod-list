@@ -1,37 +1,28 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import propType from "prop-types"
+import { connect } from 'react-redux';
+import { fetchPost }  from '../redux/actions/postAction';
 
-export default class User extends Component {
-    constructor() {
-        super()
-        this.state = {
-            users: []
+
+ class User extends Component {
+
+    componentWillMount () {
+        this.props.fetchPost()
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.newPost){
+            this.props.userPosts.unshift(nextProps.newPost)
         }
-    }
-
-    componentDidMount() {
-       setInterval(() => {
-           this.fatchdata()
-           console.log("fatching dat every 5sc")
-       }, 500);
-    }
-
-    fatchdata = () => {
-         axios.get("https://glacial-shelf-46892.herokuapp.com/api/user")
-            .then( (user) => {
-                this.setState({
-                    users: user.data
-                })
-            })
     }
 
     
     render() {
-        console.log(this.state.users)
+        // console.log(this.state.users)
         return (
             <>
                 {
-                    this.state.users.map( (user) => {
+                    this.props.userPosts.map( (user) => {
                         return (
                             <tbody>
                                 <tr>
@@ -50,3 +41,17 @@ export default class User extends Component {
         )
     }
 }
+
+User.propType = {
+    fetchPost: propType.func.isRequired,
+    userPosts: propType.array.isRequired,
+    newPost: propType.object
+}
+
+const mapStateToProps = state => ({
+    userPosts: state.userPost.userPosts,
+    newPost: state.userPost.userPosts
+})
+
+
+export default connect(mapStateToProps, { fetchPost })(User)
