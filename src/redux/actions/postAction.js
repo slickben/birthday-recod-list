@@ -1,15 +1,17 @@
 import {ADD_NEW_POST, FETCH_USER_POST} from '../actions/types';
 import axios from 'axios'
 
+// https://glacial-shelf-46892.herokuapp.com/api/user
 export const fetchPost = () => dispatch =>  {
    console.log("fetching")
     axios.get("https://glacial-shelf-46892.herokuapp.com/api/user")
         .then( (user) => {
-            console.log(user.data)
+            // console.log(user.data)
             dispatch({
                 type: FETCH_USER_POST,
                 payload: user.data
             })
+            
         })  
 }
 
@@ -23,7 +25,7 @@ export const createPost = (postData) => dispatch =>  {
         hobby: postData.hobby
     })
         .then( (post) => {
-             console.log(post)
+            //  console.log(post)
              dispatch({
                  type: ADD_NEW_POST,
                  payload: post
